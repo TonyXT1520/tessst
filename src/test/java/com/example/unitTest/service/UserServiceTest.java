@@ -35,7 +35,9 @@ public class UserServiceTest {
         newUser.setEmail("mark@example.com");
 
         UserEntity savedUser = userService.createUser(newUser);
+        List<UserEntity> users = userService.getAllUsers();
         assertNotNull(savedUser.getId());
+        assertEquals(3, users.size());
     }
 
     @Test
@@ -47,7 +49,6 @@ public class UserServiceTest {
 
     @Test
     void testDeleteUserNotFound() {
-
         assertDoesNotThrow(() -> userService.deleteUser(999L));
     }
 
